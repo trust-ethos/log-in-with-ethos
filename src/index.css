@@ -1,0 +1,175 @@
+:root {
+  /* Ethos colors */
+  --ethos-primary: #2e7bc3;
+  --ethos-dark: #1f2125;
+  --ethos-dark-lighter: #2a2d32;
+  --ethos-border: #3a3d42;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--ethos-dark);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid var(--ethos-border);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--ethos-dark-lighter);
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+button:hover {
+  border-color: var(--ethos-primary);
+  background-color: #353840;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--ethos-primary);
+  outline-offset: 2px;
+}
+
+/* Logo */
+.ethos-logo {
+  margin-bottom: 1rem;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  align-items: center;
+}
+
+/* Profile Card */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--ethos-dark-lighter);
+  border-radius: 12px;
+  border: 1px solid var(--ethos-border);
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.profile-name a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.profile-name a:hover {
+  color: var(--ethos-primary);
+}
+
+.profile-username {
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+
+.profile-id,
+.profile-description,
+.profile-score {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.score-level {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+/* Wallet Address */
+.wallet-address {
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+.wallet-address code {
+  background: var(--ethos-dark-lighter);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid var(--ethos-border);
+  color: #aaa;
+}
+
+/* GitHub Link */
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #888;
+  text-decoration: none;
+  border: 1px solid var(--ethos-border);
+  border-radius: 8px;
+  background: var(--ethos-dark-lighter);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.github-link:hover {
+  color: #fff;
+  border-color: var(--ethos-primary);
+}
+
+.github-link svg {
+  flex-shrink: 0;
+}
