@@ -11,6 +11,9 @@ createRoot(document.getElementById('root')!).render(
     <PrivyProvider
       appId={import.meta.env.VITE_PRIVY_APP_ID}
       config={{
+        appearance: {
+          theme: 'dark',
+        },
         loginMethodsAndOrder: { primary: [`privy:${ETHOS_NETWORK_APP_ID}`] },
       }}
     >
