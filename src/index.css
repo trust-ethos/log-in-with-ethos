@@ -183,15 +183,21 @@ button:focus-visible {
   color: #aaa;
 }
 
-/* GitHub Link */
-.github-link {
+/* Top Links */
+.top-links {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.top-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
   font-size: 0.85rem;
   color: #888;
   text-decoration: none;
@@ -199,14 +205,13 @@ button:focus-visible {
   border-radius: 8px;
   background: var(--ethos-dark-lighter);
   transition: color 0.15s, border-color 0.15s;
-  z-index: 100;
 }
 
-.github-link:hover {
+.top-link:hover {
   color: #fff;
   border-color: var(--ethos-primary);
 }
 
-.github-link svg {
+.top-link svg {
   flex-shrink: 0;
 }

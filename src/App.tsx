@@ -2,10 +2,10 @@ import { usePrivy } from '@privy-io/react-auth'
 import {
   EthosLogo,
   EthosProfileCard,
-  GitHubLink,
   LoadingMessage,
   LoginButton,
   LogoutButton,
+  TopLinks,
   WalletAddress,
 } from './components.tsx'
 import { useEthosUser, useEthosWallet } from './hooks.ts'
@@ -19,7 +19,7 @@ export function App() {
 
   return (
     <>
-      <GitHubLink />
+      <TopLinks />
       <div className='container'>
         <EthosLogo size={160} />
 
