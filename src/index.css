@@ -58,7 +58,27 @@ button:focus-visible {
 
 /* Logo */
 .ethos-logo {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* App Header */
+.app-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.app-header p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #888;
+  max-width: 400px;
 }
 
 /* Layout */
@@ -165,18 +185,21 @@ button:focus-visible {
 
 /* GitHub Link */
 .github-link {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 2rem;
   padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #888;
   text-decoration: none;
   border: 1px solid var(--ethos-border);
   border-radius: 8px;
   background: var(--ethos-dark-lighter);
   transition: color 0.15s, border-color 0.15s;
+  z-index: 100;
 }
 
 .github-link:hover {

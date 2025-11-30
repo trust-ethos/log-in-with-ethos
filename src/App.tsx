@@ -18,13 +18,19 @@ export function App() {
   }
 
   return (
-    <div className='container'>
-      <EthosLogo size={160} />
-
-      {!authenticated ? <NotAuthenticated /> : <Authenticated />}
-
+    <>
       <GitHubLink />
-    </div>
+      <div className='container'>
+        <EthosLogo size={160} />
+
+        <header className='app-header'>
+          <h1>Log in with Ethos</h1>
+          <p>Example app showing how to integrate Ethos Network authentication using Privy.</p>
+        </header>
+
+        {!authenticated ? <NotAuthenticated /> : <Authenticated />}
+      </div>
+    </>
   )
 }
 

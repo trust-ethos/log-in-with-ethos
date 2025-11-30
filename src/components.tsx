@@ -121,7 +121,7 @@ export function EthosProfileCard({ user }: { user: EthosUser }) {
 export function LoginButton({ onClick }: { onClick: () => void }) {
   return (
     <button type='button' onClick={onClick}>
-      Log in with Ethos
+      Log in
     </button>
   )
 }
