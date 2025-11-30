@@ -134,11 +134,50 @@ export function LogoutButton({ onClick }: { onClick: () => void }) {
   )
 }
 
+export function EthosEverywhereIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={size}
+      height={size}
+      viewBox='0 0 27 27'
+      fill='none'
+    >
+      <g clipPath='url(#ethos-everywhere-clip)'>
+        <path
+          d='M26.907 26.998H5.788V21.72h5.274v-5.28H5.788v-5.282h5.274v-5.28H5.788V.598h21.12V27ZM5.788 21.72H.503v-5.28h5.285v5.28Zm0-10.562H.503v-5.28h5.285v5.28Z'
+          fill='url(#ethos-everywhere-gradient)'
+        />
+      </g>
+      <defs>
+        <linearGradient
+          id='ethos-everywhere-gradient'
+          x1='15.742'
+          y1='24.299'
+          x2='29.949'
+          y2='-.863'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#c16e15' />
+          <stop offset='1' stopColor='#f6a70c' />
+        </linearGradient>
+        <clipPath id='ethos-everywhere-clip'>
+          <path fill='#fff' d='M.501.6H26.9V27H.501z' />
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
 export function WalletAddress({ address }: { address?: string }) {
   return (
-    <p className='wallet-address'>
-      Ethos Everywhere wallet: <code>{address ?? 'Not connected'}</code>
-    </p>
+    <div className='wallet-address'>
+      <span className='wallet-label'>
+        <EthosEverywhereIcon size={18} />
+        Ethos Everywhere wallet:
+      </span>
+      <code>{address ?? 'Not connected'}</code>
+    </div>
   )
 }
 
