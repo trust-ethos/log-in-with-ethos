@@ -36,12 +36,15 @@ export function useEthosUser(walletAddress?: string) {
 
     let cancelled = false
 
-    fetch(`https://api.ethos.network/api/v2/user/by/address/${walletAddress}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Ethos-Client': 'log-in-with-ethos-example',
+    fetch(
+      `https://api.ethos.network/api/v2/user/by/ethos-everywhere-wallet/${walletAddress}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Ethos-Client': 'log-in-with-ethos-example',
+        },
       },
-    })
+    )
       .then((response) => {
         if (!response.ok) throw new Error('Failed to fetch Ethos user')
         return response.json()
