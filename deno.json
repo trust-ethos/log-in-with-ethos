@@ -1,5 +1,13 @@
 {
   "nodeModulesDir": "auto",
+  "deploy": {
+    "install": "npm install",
+    "build": "npm run build",
+    "runtime": {
+      "type": "static",
+      "cwd": "./dist"
+    }
+  },
   "tasks": {
     "dev": "deno run -A npm:vite",
     "build": "deno run -A npm:vite build",
