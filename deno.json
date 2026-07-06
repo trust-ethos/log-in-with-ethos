@@ -1,7 +1,7 @@
 {
   "nodeModulesDir": "auto",
   "deploy": {
-    "install": "npm install",
+    "install": "deno install",
     "build": "npm run build",
     "runtime": {
       "type": "static",
