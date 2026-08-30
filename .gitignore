@@ -11,5 +11,12 @@ node_modules
 dist
 dist-ssr
 
+# Local environment files. VITE_* values are public by design (they are inlined
+# into the browser bundle), but these files are also where a real secret would
+# first be pasted, so they must never be tracked.
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .DS_Store
