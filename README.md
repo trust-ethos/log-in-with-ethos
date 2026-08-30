@@ -47,13 +47,18 @@ GET https://api.ethos.network/api/v2/user/by/ethos-everywhere-wallet/{address}
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in the project root:
+Create a `.env.local` file in the project root:
 
 ```bash
 VITE_PRIVY_APP_ID=your-privy-app-id-here
 ```
 
 Replace `your-privy-app-id-here` with your actual Privy App ID.
+
+> `VITE_`-prefixed variables are inlined into the browser bundle, so only put
+> public client identifiers (like the Privy App ID) here. `.env.local` is listed
+> in `.gitignore` and must stay untracked, so a genuine secret can never be
+> committed by accident.
 
 ## Running Locally
 

@@ -83,20 +83,37 @@ export function EthosLogo({ size = 64 }: { size?: number }) {
   )
 }
 
+// `links.profile` and `avatarUrl` arrive from the Ethos API and end up in an
+// href / src attribute. Anything that is not plain http(s) is dropped: a
+// `javascript:` URL in an href executes on click, and `data:`/`blob:` values let
+// remote content decide what the page loads. React only warns about some of
+// these, so we filter explicitly rather than relying on the renderer.
+function safeExternalUrl(rawUrl?: string): string | undefined {
+  if (!rawUrl) return undefined
+
+  try {
+    const parsed = new URL(rawUrl, window.location.origin)
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? parsed.href : undefined
+  } catch {
+    // Not a parseable URL at all - treat it as absent.
+    return undefined
+  }
+}
+
 export function EthosProfileCard({ user }: { user: EthosUser }) {
   const scoreColor = getScoreColor(user.score)
   const scoreLevel = getScoreLevel(user.score)
+  const avatarUrl = safeExternalUrl(user.avatarUrl)
+  const profileUrl = safeExternalUrl(user.links?.profile)
 
   return (
     <div className='profile-card'>
-      {user.avatarUrl && (
-        <img src={user.avatarUrl} alt={user.displayName} className='profile-avatar' />
-      )}
+      {avatarUrl && <img src={avatarUrl} alt={user.displayName} className='profile-avatar' />}
       <div className='profile-info'>
         <h2 className='profile-name'>
-          {user.links?.profile
+          {profileUrl
             ? (
-              <a href={user.links.profile} target='_blank' rel='noopener noreferrer'>
+              <a href={profileUrl} target='_blank' rel='noopener noreferrer'>
                 {user.displayName}
               </a>
             )

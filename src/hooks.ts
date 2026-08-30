@@ -21,6 +21,10 @@ interface FetchState {
   error: string | null
 }
 
+// Give the profile request a deadline. Without one a stalled connection leaves
+// the card stuck on "Loading Ethos profile..." forever with no way to recover.
+const ETHOS_API_TIMEOUT_MS = 10_000
+
 /**
  * Hook to fetch Ethos user profile by wallet address
  */
@@ -34,15 +38,21 @@ export function useEthosUser(walletAddress?: string) {
   useEffect(() => {
     if (!walletAddress) return
 
-    let cancelled = false
+    // Aborting on cleanup (instead of only ignoring the result) also cancels the
+    // in-flight request when the address changes or the component unmounts.
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), ETHOS_API_TIMEOUT_MS)
 
     fetch(
-      `https://api.ethos.network/api/v2/user/by/ethos-everywhere-wallet/${walletAddress}`,
+      `https://api.ethos.network/api/v2/user/by/ethos-everywhere-wallet/${
+        encodeURIComponent(walletAddress)
+      }`,
       {
         headers: {
           'Content-Type': 'application/json',
           'X-Ethos-Client': 'log-in-with-ethos-example',
         },
+        signal: controller.signal,
       },
     )
       .then((response) => {
@@ -50,19 +60,23 @@ export function useEthosUser(walletAddress?: string) {
         return response.json()
       })
       .then((data) => {
-        if (!cancelled) {
-          setState({ ethosUser: data, loading: false, error: null })
-        }
+        setState({ ethosUser: data, loading: false, error: null })
       })
       .catch((err) => {
+        // An abort is our own cleanup, not a failure worth reporting, and the
+        // component may already be unmounted so we must not setState.
+        if (controller.signal.aborted) return
+
         console.error('Error fetching Ethos user:', err)
-        if (!cancelled) {
-          setState({ ethosUser: null, loading: false, error: err.message })
-        }
+        setState({ ethosUser: null, loading: false, error: err.message })
+      })
+      .finally(() => {
+        clearTimeout(timeoutId)
       })
 
     return () => {
-      cancelled = true
+      clearTimeout(timeoutId)
+      controller.abort()
     }
   }, [walletAddress])
 
