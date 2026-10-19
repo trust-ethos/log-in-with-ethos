@@ -29,6 +29,7 @@
   "spend": {
     "fixed": []
   },
+  "privy": ["cmim8vnj301cijp0c2i8j3vs4"],
   "notes": "Static Vite build served by Deno Deploy (project ethos, runtime static from ./dist). VITE_PRIVY_APP_ID is a public build-time value, not a secret. Linked from the developer docs as the reference integration.",
   "tags": ["example", "developers", "privy", "public"]
 }
