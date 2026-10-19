@@ -1,0 +1,35 @@
+{
+  "$schema": "https://fleet.beta.ethos.network/schema/fleet.json",
+  "name": "log-in-with-ethos",
+  "title": "Log in with Ethos",
+  "description": "A minimal React example for developers showing how to add \"Log in with Ethos\" through Privy cross-app login and fetch the user's Ethos profile.",
+  "status": "active",
+  "owner": "vitalii@ethos.network",
+  "repo": "trust-ethos/log-in-with-ethos",
+  "urls": [
+    "https://login-example.ethos.network",
+    "https://log-in-with-ethos.ethos.deno.net"
+  ],
+  "access": "public",
+  "services": [
+    {
+      "name": "privy",
+      "purpose": "Cross-app login with the Ethos Network Privy app",
+      "console": "https://dashboard.privy.io",
+      "billing": "free",
+      "notes": "Needs only the public app id (VITE_PRIVY_APP_ID), baked in at build time; the app's domain must be allowed in the Privy dashboard."
+    },
+    {
+      "name": "ethos-api",
+      "purpose": "Profile by Ethos Everywhere wallet address",
+      "billing": "free"
+    }
+  ],
+  "secrets": [],
+  "spend": {
+    "fixed": []
+  },
+  "privy": ["cmim8vnj301cijp0c2i8j3vs4"],
+  "notes": "Static Vite build served by Deno Deploy (project ethos, runtime static from ./dist). VITE_PRIVY_APP_ID is a public build-time value, not a secret. Linked from the developer docs as the reference integration.",
+  "tags": ["example", "developers", "privy", "public"]
+}
