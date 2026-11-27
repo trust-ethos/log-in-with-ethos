@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "log-in-with-ethos",
+  "compatibility_date": "2026-11-27",
+  "build": {
+    "command": "pnpm run build",
+  },
+  "assets": {
+    "directory": "./dist",
+  },
+}

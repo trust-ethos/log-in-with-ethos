@@ -28,7 +28,7 @@ GET https://api.ethos.network/api/v2/user/by/ethos-everywhere-wallet/{address}
 
 ## Prerequisites
 
-- [Deno](https://deno.land/) installed
+- [Node.js](https://nodejs.org/) 22.12 or newer and [pnpm](https://pnpm.io/) installed
 - A [Privy](https://privy.io/) account
 
 ## Setup Guide
@@ -47,7 +47,7 @@ GET https://api.ethos.network/api/v2/user/by/ethos-everywhere-wallet/{address}
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in the project root:
+Set your App ID in `.env.local` in the project root:
 
 ```bash
 VITE_PRIVY_APP_ID=your-privy-app-id-here
@@ -60,13 +60,13 @@ Replace `your-privy-app-id-here` with your actual Privy App ID.
 ### Install Dependencies
 
 ```bash
-deno install
+pnpm install
 ```
 
 ### Start Development Server
 
 ```bash
-deno task dev
+pnpm dev
 ```
 
 The app will be available at `http://localhost:5173`
@@ -74,7 +74,20 @@ The app will be available at `http://localhost:5173`
 ### Build for Production
 
 ```bash
-deno task build
+pnpm build
+```
+
+## Deployment
+
+The app is a static site served by a [Cloudflare Worker](https://developers.cloudflare.com/workers/static-assets/) (config in `wrangler.jsonc`).
+
+[Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) deploys every push to `main`: it installs dependencies with pnpm and runs `npx wrangler deploy`, which builds the app and uploads `dist/`.
+
+To deploy from your machine:
+
+```bash
+pnpm install
+pnpm wrangler deploy
 ```
 
 ## Resources

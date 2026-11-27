@@ -94,15 +94,13 @@ export function EthosProfileCard({ user }: { user: EthosUser }) {
       )}
       <div className='profile-info'>
         <h2 className='profile-name'>
-          {user.links?.profile
-            ? (
-              <a href={user.links.profile} target='_blank' rel='noopener noreferrer'>
-                {user.displayName}
-              </a>
-            )
-            : (
-              user.displayName
-            )}
+          {user.links?.profile ? (
+            <a href={user.links.profile} target='_blank' rel='noopener noreferrer'>
+              {user.displayName}
+            </a>
+          ) : (
+            user.displayName
+          )}
           {user.username && <span className='profile-username'>@{user.username}</span>}
         </h2>
         {user.profileId && <p className='profile-id'>Profile ID: {user.profileId}</p>}
