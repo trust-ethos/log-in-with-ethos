@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fleet.beta.ethos.network/schema/fleet.json",
+  "name": "log-in-with-ethos",
+  "title": "Log in with Ethos",
+  "description": "Example app that shows how to add Log in with Ethos to a React app through Privy.",
+  "status": "active",
+  "owner": "vitalii@ethos.network",
+  "repo": "trust-ethos/log-in-with-ethos",
+  "urls": ["https://login-example.ethos.network"],
+  "cloudflare": { "account": "trust-ethos", "workers": ["log-in-with-ethos"] },
+  "access": "public",
+  "services": [
+    {
+      "name": "privy",
+      "purpose": "Log in with Ethos (cross-app sign-in), in the browser only",
+      "console": "https://dashboard.privy.io"
+    },
+    {
+      "name": "ethos-api",
+      "purpose": "Fetches the Ethos profile for the signed-in Ethos Everywhere wallet, from the browser",
+      "console": "https://api.ethos.network",
+      "billing": "free"
+    }
+  ],
+  "secrets": [],
+  "notes": "Static site with no server code. The Privy app ID is a build-time value (VITE_PRIVY_APP_ID in .env.local).",
+  "tags": ["example", "public"]
+}
