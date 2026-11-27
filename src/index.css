@@ -42,7 +42,9 @@ button {
   background-color: var(--ethos-dark-lighter);
   color: #fff;
   cursor: pointer;
-  transition: border-color 0.15s, background-color 0.15s;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s;
 }
 
 button:hover {
@@ -204,7 +206,9 @@ button:focus-visible {
   border: 1px solid var(--ethos-border);
   border-radius: 8px;
   background: var(--ethos-dark-lighter);
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .top-link:hover {
